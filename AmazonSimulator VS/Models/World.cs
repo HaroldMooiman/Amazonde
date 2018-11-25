@@ -7,7 +7,7 @@ using System.Numerics;
 namespace Models {
     public class World : IObservable<Command>, IUpdatable
     {
-        private List<Model> robots = new List<Model>(); //DONT forget to change this to robots when you write the child class
+        private List<Robot> robots = new List<Robot>(); //DONT forget to change this to robots when you write the child class
         private List<Path> tasks = new List<Path>(); //experm
         private List<Model> worldObjects = new List<Model>();
         private List<IObserver<Command>> observers = new List<IObserver<Command>>();
@@ -17,15 +17,17 @@ namespace Models {
         
         public World() {
             
-            Model r = CreateRobot(0,0,0);
+            Robot r = CreateRobot(0,0,0);
             r.Move(0, 0, 0);
 
             griddy = new ASTARGrid();
             //griddy.VisualiseNodes(this);
             path = new Path(griddy, new Vector2(0, 0), new Vector2(13, 29));
+            Pickup pickup = new Pickup(new Vector2(27, 29), griddy);
+            worldObjects.Add(pickup);
             this.tasks.Add(path);
-            path.VisualisePath(this);
-            taskm = new Taskmanager(robots, tasks);
+            //path.VisualisePath(this);
+            //taskm = new Taskmanager(robots, tasks);
         }
 
         public void AddObject(Model m)
@@ -34,8 +36,8 @@ namespace Models {
             
         }
 
-        private Model CreateRobot(double x, double y, double z) {
-            Model r = new Model(x,y,z,0,0,0);
+        private Robot CreateRobot(double x, double y, double z) {
+            Robot r = new Robot(x,y,z,0,0,0);
             worldObjects.Add(r);
             this.robots.Add(r);
             return r;
@@ -65,7 +67,7 @@ namespace Models {
 
         public bool Update(int tick)
         {
-            taskm.Update();
+            //taskm.Update();
             for(int i = 0; i < worldObjects.Count; i++) {
                 Model u = worldObjects[i];
 

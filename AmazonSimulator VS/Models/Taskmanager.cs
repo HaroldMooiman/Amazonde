@@ -7,10 +7,10 @@ namespace Models
 {
     public class Taskmanager
     {
-        List<Model> robots;
+        List<Robot> robots;
         List<Path> tasks;
 
-        public Taskmanager(List<Model> robots, List<Path> tasks)
+        public Taskmanager(List<Robot> robots, List<Path> tasks)
         {
             this.robots = robots;
             this.tasks = tasks;
@@ -54,5 +54,25 @@ namespace Models
 
             robots[0].Move(Math.Round(robots[0].x + movex, 1), robots[0].y, Math.Round(robots[0].z + movez, 1));
         }
+    }
+
+    public abstract class Task
+    {
+
+    }
+
+    public class PathTask : Task
+    {
+
+    }
+
+    public class DropTask : Task
+    {
+
+    }
+
+    public class FetchTask : Task
+    {
+
     }
 }

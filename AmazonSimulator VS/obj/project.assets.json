@@ -12669,11 +12669,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "X:\\Documents\\NHL\\Graphics\\AmazonSimulator VS\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
+      "projectUniqueName": "X:\\Documents\\NHL\\Graphics\\Amazonde\\Amazonde\\trunk\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
       "projectName": "AmazonSimulator VS",
-      "projectPath": "X:\\Documents\\NHL\\Graphics\\AmazonSimulator VS\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
+      "projectPath": "X:\\Documents\\NHL\\Graphics\\Amazonde\\Amazonde\\trunk\\AmazonSimulator VS\\AmazonSimulator VS.csproj",
       "packagesPath": "C:\\Users\\Summer Glou\\.nuget\\packages\\",
-      "outputPath": "X:\\Documents\\NHL\\Graphics\\AmazonSimulator VS\\AmazonSimulator VS\\obj\\",
+      "outputPath": "X:\\Documents\\NHL\\Graphics\\Amazonde\\Amazonde\\trunk\\AmazonSimulator VS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

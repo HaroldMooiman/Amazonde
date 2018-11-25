@@ -105,9 +105,20 @@
                             scene.add(group);
                             worldObjects[command.parameters.guid] = group;
                         }
+                        if (command.parameters.type == 'pickup') {
+                            var geometry = new THREE.BoxGeometry(0.3, 0.3, 0.3);
+                            var material = new THREE.MeshBasicMaterial({ color: 0x00cc00 });
+                            var pickup = new THREE.Mesh(geometry, material);
+
+                            var group = new THREE.Group();
+                            group.add(pickup);
+
+                            scene.add(group);
+                            worldObjects[command.parameters.guid] = group;
+                        }
                         if (command.parameters.type == 'node') {
                             var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-                            var material = new THREE.MeshBasicMaterial({ color: 0xff00ff })
+                            var material = new THREE.MeshBasicMaterial({ color: 0xff00ff });
                             var node = new THREE.Mesh(geometry, material);
 
                             var group = new THREE.Group();
@@ -118,7 +129,7 @@
                         }
                         if (command.parameters.type == 'path') {
                             var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-                            var material = new THREE.MeshBasicMaterial({ color: 0xffff00 })
+                            var material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
                             var node = new THREE.Mesh(geometry, material);
 
                             var group = new THREE.Group();

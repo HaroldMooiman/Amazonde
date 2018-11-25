@@ -52,7 +52,7 @@ namespace Models
         public float xpos, ypos;
         float offset = 0.5f;
 
-        object attached = null;
+        public object attached = null;
 
         public Gridnodes(int x, int y)
         {

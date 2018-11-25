@@ -4,7 +4,7 @@ using System.Linq;
 using Newtonsoft.Json;
 
 namespace Models {
-    public class Model : IUpdatable {
+    public abstract class Model : IUpdatable {
         private double _x = 0;
         private double _y = 0;
         private double _z = 0;
@@ -25,7 +25,7 @@ namespace Models {
         public bool needsUpdate = true;
 
         public Model(double x, double y, double z, double rotationX, double rotationY, double rotationZ) {
-            this.type = "robot";
+            //this.type = "robot";
             this.guid = Guid.NewGuid();
 
             this._x = x;
