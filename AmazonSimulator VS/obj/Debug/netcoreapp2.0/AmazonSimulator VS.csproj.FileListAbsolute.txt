@@ -31,3 +31,14 @@ X:\Documents\NHL\Graphics\Amazonde\Amazonde\trunk\AmazonSimulator VS\obj\Debug\n
 X:\Documents\NHL\Graphics\Amazonde\Amazonde\trunk\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.AssemblyInfo.cs
 X:\Documents\NHL\Graphics\Amazonde\Amazonde\trunk\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.dll
 X:\Documents\NHL\Graphics\Amazonde\Amazonde\trunk\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.pdb
+C:\Users\Trinks\Documents\GitHub\Amazonde\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.deps.json
+C:\Users\Trinks\Documents\GitHub\Amazonde\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.runtimeconfig.json
+C:\Users\Trinks\Documents\GitHub\Amazonde\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.runtimeconfig.dev.json
+C:\Users\Trinks\Documents\GitHub\Amazonde\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.dll
+C:\Users\Trinks\Documents\GitHub\Amazonde\AmazonSimulator VS\bin\Debug\netcoreapp2.0\AmazonSimulator VS.pdb
+C:\Users\Trinks\Documents\GitHub\Amazonde\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.csprojAssemblyReference.cache
+C:\Users\Trinks\Documents\GitHub\Amazonde\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.csproj.CoreCompileInputs.cache
+C:\Users\Trinks\Documents\GitHub\Amazonde\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.AssemblyInfoInputs.cache
+C:\Users\Trinks\Documents\GitHub\Amazonde\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.AssemblyInfo.cs
+C:\Users\Trinks\Documents\GitHub\Amazonde\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.dll
+C:\Users\Trinks\Documents\GitHub\Amazonde\AmazonSimulator VS\obj\Debug\netcoreapp2.0\AmazonSimulator VS.pdb
