@@ -8,24 +8,42 @@ namespace Models {
     public class World : IObservable<Command>, IUpdatable
     {
         private List<Robot> robots = new List<Robot>(); //DONT forget to change this to robots when you write the child class
-        private List<Model> worldObjects = new List<Model>();
+        public List<Model> worldObjects = new List<Model>();
         private List<IObserver<Command>> observers = new List<IObserver<Command>>();
-        private ASTARGrid griddy;
+        public ASTARGrid griddy;
         Taskmanager taskm;
+        EventManager evenm;
         
         public World() {
             griddy = new ASTARGrid(); //setup grid
             taskm = new Taskmanager(robots, griddy); //setup taskmanager
+            evenm = new EventManager(this);
             //griddy.VisualiseNodes(this); //visualise nodes
-            Robot r = CreateRobot(0,0,0);
-            r.Move(0, 0, 0);
+            CreateRobot(0.5,0,0.5);
+            CreateRobot(1.5, 0, 0.5);
+            CreateRobot(2.5, 0, 0.5);
 
             
             
-            Pickup pickup = new Pickup(new Vector2(27, 29), griddy);
-            worldObjects.Add(pickup);
+            //Pickup pickup = new Pickup(new Vector2(27, 29), griddy);
+            //worldObjects.Add(pickup);
 
-            PickupTask(r, pickup);
+            //PickupTask(r, pickup);
+        }
+
+        private void Slackdotexe()
+        {
+            foreach(Robot robo in robots)
+            {
+                if(robo.idle)
+                {
+                    if(evenm.idles.Count() != 0)
+                    {
+                        PickupTask(robo, evenm.idles[0]);
+                        evenm.idles.RemoveAt(0);
+                    }
+                }
+            }
         }
 
         private void PickupTask(Robot r, Pickup p)
@@ -38,8 +56,6 @@ namespace Models {
             taskm.AddTask(t);
             t = new DropTask(r, new Vector2(0, 0), griddy);
             taskm.AddTask(t);
-            t = new PathTask(r, new Vector2(15, 15), griddy);
-            taskm.AddTask(t);
         }
 
         public void AddObject(Model m)
@@ -48,11 +64,11 @@ namespace Models {
             
         }
 
-        private Robot CreateRobot(double x, double y, double z) {
+        private void CreateRobot(double x, double y, double z) {
             Robot r = new Robot(x,y,z,0,0,0);
+            
             worldObjects.Add(r);
             this.robots.Add(r);
-            return r;
         }
 
         public IDisposable Subscribe(IObserver<Command> observer)
@@ -79,7 +95,10 @@ namespace Models {
 
         public bool Update(int tick)
         {
+            Console.WriteLine("Update World");
+            Slackdotexe();
             taskm.Update();
+            evenm.Update();
             for(int i = 0; i < worldObjects.Count; i++) {
                 Model u = worldObjects[i];
 

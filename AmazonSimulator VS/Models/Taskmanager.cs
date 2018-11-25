@@ -20,6 +20,7 @@ namespace Models
         public void AddTask(Task t)
         {
             tasklist.Add(t);
+            t.robot.idle = false;
         }
 
         public void Update()
@@ -36,13 +37,21 @@ namespace Models
 
             foreach (Robot r in robots)
             {
+                bool taskfound = false;
+
                 for(int i = 0, l = tasklist.Count(); i<l; i++)
                 {
-                    if(tasklist[i].robot == r)
+                    if(tasklist[i].robot.guid == r.guid)
                     {
                         tasklist[i].DoTask();
+                        taskfound = true;
                         break;
                     }
+                }
+
+                if(!taskfound)
+                {
+                    r.idle = true;
                 }
             }
 
