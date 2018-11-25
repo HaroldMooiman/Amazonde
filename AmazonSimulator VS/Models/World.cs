@@ -8,26 +8,38 @@ namespace Models {
     public class World : IObservable<Command>, IUpdatable
     {
         private List<Robot> robots = new List<Robot>(); //DONT forget to change this to robots when you write the child class
-        private List<Path> tasks = new List<Path>(); //experm
         private List<Model> worldObjects = new List<Model>();
         private List<IObserver<Command>> observers = new List<IObserver<Command>>();
         private ASTARGrid griddy;
-        private Path path;
         Taskmanager taskm;
         
         public World() {
-            
+            griddy = new ASTARGrid(); //setup grid
+            taskm = new Taskmanager(robots, griddy); //setup taskmanager
+            //griddy.VisualiseNodes(this); //visualise nodes
             Robot r = CreateRobot(0,0,0);
             r.Move(0, 0, 0);
 
-            griddy = new ASTARGrid();
-            //griddy.VisualiseNodes(this);
-            path = new Path(griddy, new Vector2(0, 0), new Vector2(13, 29));
+            
+            
             Pickup pickup = new Pickup(new Vector2(27, 29), griddy);
             worldObjects.Add(pickup);
-            this.tasks.Add(path);
-            //path.VisualisePath(this);
-            //taskm = new Taskmanager(robots, tasks);
+
+            PickupTask(r, pickup);
+        }
+
+        private void PickupTask(Robot r, Pickup p)
+        {
+            Task t = new PathTask(r, p, griddy);
+            taskm.AddTask(t);
+            t = new FetchTask(r, p, griddy);
+            taskm.AddTask(t);
+            t = new PathTask(r, new Vector2(0, 0), griddy);
+            taskm.AddTask(t);
+            t = new DropTask(r, new Vector2(0, 0), griddy);
+            taskm.AddTask(t);
+            t = new PathTask(r, new Vector2(15, 15), griddy);
+            taskm.AddTask(t);
         }
 
         public void AddObject(Model m)
@@ -67,7 +79,7 @@ namespace Models {
 
         public bool Update(int tick)
         {
-            //taskm.Update();
+            taskm.Update();
             for(int i = 0; i < worldObjects.Count; i++) {
                 Model u = worldObjects[i];
 

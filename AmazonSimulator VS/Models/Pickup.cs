@@ -8,6 +8,7 @@ namespace Models
 {
     public class Pickup : Model
     {
+        object attached;
         float bobnumber = 0;
         bool bobrising = true;
 
@@ -15,15 +16,21 @@ namespace Models
         {
             this.type = "pickup";
             grid.grid[(int)pos.X, (int)pos.Y].attached = this; //bascially pickups can't exist without being on the grid.
+            attached = grid.grid[(int)pos.X, (int)pos.Y];
+            Move(x, y + 0.8, z);
+            //ylevel = y;
         }
 
         public Pickup(double x, double y, double z, double rotationX, double rotationY, double rotationZ) : base(x, y, z, rotationX, rotationY, rotationZ)
         {
             this.type = "pickup";
+            //ylevel = y;
         }
 
         private void Bob()
         {
+            Move(x, y - bobnumber, z);
+
             if(bobrising)
             {
                 bobnumber += 0.01f;
@@ -43,7 +50,7 @@ namespace Models
                 }
             }
 
-            Move(x, 1 + bobnumber, z);
+            Move(x, y + bobnumber, z);
         }
 
         public override bool Update(int tick)
