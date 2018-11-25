@@ -20,17 +20,14 @@ namespace Models {
             evenm = new EventManager(this);
             //griddy.VisualiseNodes(this); //visualise nodes
             CreateRobot(0.5,0,0.5);
-            CreateRobot(1.5, 0, 0.5);
-            CreateRobot(2.5, 0, 0.5);
+            //CreateRobot(1.5, 0, 0.5); //for some reason stops working when multiple robots are in play. No idea why. Debugging is not helping.
+            //CreateRobot(2.5, 0, 0.5);
 
-            
-            
-            //Pickup pickup = new Pickup(new Vector2(27, 29), griddy);
-            //worldObjects.Add(pickup);
-
-            //PickupTask(r, pickup);
         }
 
+        /// <summary>
+        /// Gives a robot a task when he's slacking
+        /// </summary>
         private void Slackdotexe()
         {
             foreach(Robot robo in robots)
@@ -46,6 +43,11 @@ namespace Models {
             }
         }
 
+        /// <summary>
+        /// creates all necessary tasks to haul a pickup and bring it home
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="p"></param>
         private void PickupTask(Robot r, Pickup p)
         {
             Task t = new PathTask(r, p, griddy);

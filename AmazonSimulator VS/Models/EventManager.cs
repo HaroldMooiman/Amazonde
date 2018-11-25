@@ -8,7 +8,6 @@ namespace Models
 {
     public class EventManager
     {
-        int ticks;
         Random rtd = new Random();
         public List<Pickup> idles = new List<Pickup>();
         List<PseudoPickup> meteors = new List<PseudoPickup>();
@@ -26,12 +25,12 @@ namespace Models
             {
                 if(pp.guid == w.worldObjects[i].guid)
                 {
-                    w.worldObjects.RemoveAt(i);
+                    w.worldObjects.RemoveAt(i); //remove doesn't work, pp still shows up in world, although it's hidden inside the platofrm now.
                     break;
                 }
             }
 
-            if(pp.x > 29 || pp.z > 29)
+            if(pp.x > 29 || pp.z > 29) //out of bounds measures
             {
                 pp.Move(29, pp.y, 29);
             }
@@ -41,6 +40,9 @@ namespace Models
 
         }
 
+        /// <summary>
+        /// spawns new meteors which spawn new pickups when there are few left
+        /// </summary>
         private void Spawnmeteors()
         {
             if(idles.Count() == 0 && meteors.Count() < 5)

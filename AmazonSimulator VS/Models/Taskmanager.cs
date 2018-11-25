@@ -8,7 +8,6 @@ namespace Models
 {
     public class Taskmanager
     {
-        ASTARGrid grid;
         List<Robot> robots;
         List<Task> tasklist = new List<Task>();
 
@@ -25,6 +24,7 @@ namespace Models
 
         public void Update()
         {
+            //remove completed tasks
             for (int i = 0, l = tasklist.Count(); i < l; i++)
             {
                 if (tasklist[i].completed)
@@ -39,6 +39,7 @@ namespace Models
             {
                 bool taskfound = false;
 
+                //assign a robot a task should it have one
                 for(int i = 0, l = tasklist.Count(); i<l; i++)
                 {
                     if(tasklist[i].robot.guid == r.guid)
